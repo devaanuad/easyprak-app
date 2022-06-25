@@ -15,6 +15,7 @@ class NilaiResource extends JsonResource
     public function toArray($request)
     {
         return [
+            'id' => $this->id,
             'user_id' => $this->user_id,
             'nama_siswa' => $this->nama_siswa,
             'kelas' => $this->kelas,

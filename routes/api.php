@@ -20,6 +20,8 @@ use App\Http\Controllers\Siswa\UjianController;
 
 Route::middleware('auth:sanctum')->prefix('guru')->group(function () {
     Route::get('/user', [UserController::class, 'getUserss']);
+    Route::get('/nilai', [NilaiController::class, 'getNilai']);
+    Route::post('/nilai/{id}', [NilaiController::class, 'beriPenilaianSiswa']);
 });
 
 Route::middleware('auth:sanctum')->prefix('siswa')->group(function () {
@@ -30,6 +32,7 @@ Route::middleware('auth:sanctum')->prefix('siswa')->group(function () {
 
     Route::get('/nilai', [NilaiController::class, 'getNilai']);
     Route::post('/cari/user', [NilaiController::class, 'getNilaiByKode']);
+    Route::get('nilai/{id}', [NilaiController::class, 'getNilaiById']);
 });
 
 
