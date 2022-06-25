@@ -25,9 +25,11 @@ Route::middleware('auth:sanctum')->prefix('guru')->group(function () {
 Route::middleware('auth:sanctum')->prefix('siswa')->group(function () {
     Route::get('/ujian', [UjianController::class, 'getUjian']);
     Route::get('/ujian/{kode}', [UjianController::class, 'getUjianByKode']);
+
     Route::post('/postTugas', [UjianController::class, 'postTugas']);
 
     Route::get('/nilai', [NilaiController::class, 'getNilai']);
+    Route::post('/cari/user', [NilaiController::class, 'getNilaiByKode']);
 });
 
 

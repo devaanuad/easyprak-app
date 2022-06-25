@@ -31,4 +31,28 @@ class NilaiController extends Controller
             ], 401);
         }
     }
+
+    public function getNilaiByKode(Request $req)
+    {
+        $user = $req->user();
+        if ($user->tokenCan('siswa_token')) {
+
+            $cari = NilaiResource::collection(nilai::where('user_id', $req->user_id)->get()->where('kode_soal', $req->kode_soal))->first();
+            if (empty($cari)) {
+                return response()->json([
+                    'message' => 'Data tidak ditemukan'
+                ], 404);
+            } else {
+
+                return response()->json([
+                    'message' => 'Data ditemukassn',
+                    "data" => $cari
+                ], 200);
+            }
+        } else {
+            return response()->json([
+                'message' => 'Anda tidak memiliki akses'
+            ], 401);
+        }
+    }
 }
