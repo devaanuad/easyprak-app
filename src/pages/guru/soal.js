@@ -104,7 +104,7 @@ function Soal() {
 
   return (
     <>
-      <PageTitle>Data User</PageTitle>
+      <PageTitle>Data Tugas</PageTitle>
       <div className="grid gap-3 md:grid-cols-3 xl:grid-cols-3  w-xl mb-5">
         <div className="relative focus-within:text-purple-500">
           <div className="absolute inset-y-0 flex items-center pl-2">
@@ -127,9 +127,9 @@ function Soal() {
             icon={EditIcon}
             aria-label="Edit"
             tag={Link}
-            to={`/app/guru/pengumpulan/buat`}
+            to={`/app/guru/soal/buat`}
           >
-            Tambah Data Pengumpulan
+            Tambah Data Soal
           </Button>
         </div>
       </div>

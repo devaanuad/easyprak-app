@@ -20,7 +20,7 @@ export const routesGuru = [
   {
     path: "/app/guru/soal",
     icon: "FormsIcon",
-    name: "Data Soal",
+    name: "Data Tugas",
   },
   {
     path: "/app/guru/pengumpulan",
@@ -39,5 +39,10 @@ export const routesSiswa = [
     path: "/app/siswa/nilai",
     icon: "MenuIcon",
     name: "Nilai",
+  },
+  {
+    path: "/app/siswa/module",
+    icon: "FormsIcon",
+    name: "E - Module",
   },
 ];

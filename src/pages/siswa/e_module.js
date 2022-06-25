@@ -1,5 +1,4 @@
 import PageTitle from "../../components/Typography/PageTitle";
-import { Link } from "react-router-dom";
 import React, { useState, useEffect } from "react";
 import {
   Table,
@@ -9,26 +8,16 @@ import {
   TableRow,
   TableFooter,
   TableContainer,
-  Button,
   Pagination,
   Input,
-  Modal,
-  ModalHeader,
-  ModalBody,
-  ModalFooter,
-  Label,
-  Select,
 } from "@windmill/react-ui";
-import { EditIcon, TrashIcon, SearchIcon } from "../../icons";
-import axios from "axios";
-import { API_URL } from "../../components/Middleware/constants";
+import { SearchIcon, FormsIcon } from "../../icons";
 import UsersAccess from "../../components/Middleware/BlockUsers";
-import * as SweetAlert from "../../components/Sweetalert2";
-import * as Secure from "../../components/Middleware/SecureLocalStorage";
+import response from "../../utils/demo/tableData";
 
 function Soal() {
   // block login and akses role
-  UsersAccess("guru");
+  UsersAccess("siswa");
 
   const [users, setUsers] = useState([]);
   const [pageTable2, setPageTable2] = useState(1);
@@ -47,15 +36,11 @@ function Soal() {
   }
 
   const getUsers = async () => {
-    const response = await axios.get(API_URL + "api/guru/pengumpulan", {
-      withCredentials: true,
-      headers: {
-        Authorization: `${Secure.getItem("token")}`,
-      },
-    });
-    setUsers(response.data.data);
+    setUsers(response);
     setLoading(true);
   };
+
+  console.log(response);
 
   // dapetin data user  dari function getUsers lalu set ke state setUsers
   useEffect(() => {
@@ -88,10 +73,8 @@ function Soal() {
   useEffect(() => {
     if (search !== "") {
       setDataTable2(
-        users.filter(
-          (user) =>
-            user.nama.toLowerCase().includes(search.toLowerCase()) ||
-            user.matpel.toLowerCase().includes(search.toLowerCase())
+        users.filter((user) =>
+          user.matpel.toLowerCase().includes(search.toLowerCase())
         )
       );
     } else if (search === "") {
@@ -106,7 +89,7 @@ function Soal() {
 
   return (
     <>
-      <PageTitle>Data User</PageTitle>
+      <PageTitle>Data Referensi Praktek</PageTitle>
       <div className="grid gap-3 md:grid-cols-3 xl:grid-cols-3  w-xl mb-5">
         <div className="relative focus-within:text-purple-500">
           <div className="absolute inset-y-0 flex items-center pl-2">
@@ -123,28 +106,15 @@ function Soal() {
           />
         </div>
         <div />
-        <div style={{ textAlign: "right" }}>
-          <Button
-            className=""
-            icon={EditIcon}
-            aria-label="Edit"
-            tag={Link}
-            to={`/app/guru/pengumpulan/buat`}
-          >
-            Tambah Data Pengumpulan
-          </Button>
-        </div>
       </div>
 
       <TableContainer className="mb-8">
         <Table>
           <TableHeader>
             <tr>
-              <TableCell>Nama Pengumpulan</TableCell>
               <TableCell>Matpel</TableCell>
               <TableCell>Kelas</TableCell>
-              <TableCell>Deadline</TableCell>
-              <TableCell>Kode Soal</TableCell>
+              <TableCell>file</TableCell>
               {/* <TableCell>Opsi</TableCell> */}
             </tr>
           </TableHeader>
@@ -152,10 +122,6 @@ function Soal() {
             dataTable2.map((user) => (
               <TableBody key={user.id}>
                 <TableRow>
-                  <TableCell>
-                    <span className="text-sm">{user.nama}</span>
-                  </TableCell>
-
                   <TableCell>
                     <span className="text-sm">{user.matpel}</span>
                   </TableCell>
@@ -165,30 +131,17 @@ function Soal() {
                   </TableCell>
 
                   <TableCell>
-                    <span className="text-sm">{user.selesai_ujian}</span>
-                  </TableCell>
-
-                  <TableCell>
-                    <span className="text-sm">{user.kode_soal}</span>
-                  </TableCell>
-
-                  {/* <TableCell>
                     <div className="flex items-center space-x-4">
-                      <Button
+                      <a
                         layout="link"
                         size="icon"
                         aria-label="Edit"
-                        tag={Link}
-                        to={`/app/admin/user/edit/${user.id}`}
+                        href={user.file}
                       >
-                        <EditIcon className="w-5 h-5" aria-hidden="true" />
-                      </Button>
-
-                      <Button layout="link" size="icon" aria-label="Delete">
-                        <TrashIcon className="w-5 h-5" aria-hidden="true" />
-                      </Button>
+                        <FormsIcon className="w-5 h-5" aria-hidden="true" />
+                      </a>
                     </div>
-                  </TableCell> */}
+                  </TableCell>
                 </TableRow>
               </TableBody>
             ))

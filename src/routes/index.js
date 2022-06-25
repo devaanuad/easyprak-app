@@ -15,6 +15,7 @@ const page_pengumpulan_buat = lazy(() =>
 );
 const page_siswa = lazy(() => import("../pages/guru/siswa"));
 const page_siswa_buat = lazy(() => import("../pages/guru/buatSiswa"));
+const page_module = lazy(() => import("../pages/siswa/e_module"));
 
 export const routes = [
   {
@@ -70,5 +71,9 @@ export const routesSiswa = [
   {
     path: "/siswa/nilai",
     component: page_nilai,
+  },
+  {
+    path: "/siswa/module",
+    component: page_module,
   },
 ];

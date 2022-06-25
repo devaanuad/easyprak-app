@@ -119,17 +119,15 @@ function Start() {
 
     try {
       SweetAlert.SweetLoading();
-      await axios
-        .post(API_URL + "api/siswa/postTugas", formData, {
-          withCredentials: true,
-          headers: {
-            Authorization: `${Secure.getItem("token")}`,
-          },
-        })
-        .then((res) => {
-          SweetAlert.SweetOK("sukses mengirim data");
-          history.push("/app/siswa/ujian");
-        });
+      await axios.post(API_URL + "api/siswa/postTugas", formData, {
+        withCredentials: true,
+        headers: {
+          Authorization: `${Secure.getItem("token")}`,
+        },
+      });
+
+      alert("berhasil mengumpulkan tugas praktek");
+      window.location.href = "/app/siswa/ujian";
     } catch (error) {
       SweetAlert.SweetError("gagal", error.response.data.message);
     }
