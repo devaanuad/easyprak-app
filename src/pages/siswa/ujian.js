@@ -17,7 +17,6 @@ import { SearchIcon } from "../../icons";
 import axios from "axios";
 import { API_URL } from "../../components/Middleware/constants";
 import UsersAccess from "../../components/Middleware/BlockUsers";
-import * as SweetAlert from "../../components/Sweetalert2";
 import * as Secure from "../../components/Middleware/SecureLocalStorage";
 
 function Ujian() {

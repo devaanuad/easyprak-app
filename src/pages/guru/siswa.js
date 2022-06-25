@@ -12,18 +12,11 @@ import {
   Button,
   Pagination,
   Input,
-  Modal,
-  ModalHeader,
-  ModalBody,
-  ModalFooter,
-  Label,
-  Select,
 } from "@windmill/react-ui";
-import { EditIcon, TrashIcon, SearchIcon } from "../../icons";
+import { EditIcon, SearchIcon } from "../../icons";
 import axios from "axios";
 import { API_URL } from "../../components/Middleware/constants";
 import UsersAccess from "../../components/Middleware/BlockUsers";
-import * as SweetAlert from "../../components/Sweetalert2";
 import * as Secure from "../../components/Middleware/SecureLocalStorage";
 
 function Siswa() {

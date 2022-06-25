@@ -7,13 +7,10 @@ import {
   TableCell,
   TableBody,
   TableRow,
-  TableFooter,
   TableContainer,
   Button,
-  Pagination,
-  Input,
 } from "@windmill/react-ui";
-import { FormsIcon, SearchIcon, EditIcon } from "../../icons";
+import { FormsIcon, EditIcon } from "../../icons";
 import axios from "axios";
 import { API_URL } from "../../components/Middleware/constants";
 import UsersAccess from "../../components/Middleware/BlockUsers";

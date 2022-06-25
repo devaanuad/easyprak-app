@@ -1,5 +1,4 @@
 import PageTitle from "../../components/Typography/PageTitle";
-import { Link } from "react-router-dom";
 import React, { useState, useEffect } from "react";
 import {
   Table,
@@ -7,13 +6,8 @@ import {
   TableCell,
   TableBody,
   TableRow,
-  TableFooter,
   TableContainer,
-  Button,
-  Pagination,
-  Input,
 } from "@windmill/react-ui";
-import { SearchIcon } from "../../icons";
 import axios from "axios";
 import { API_URL } from "../../components/Middleware/constants";
 import UsersAccess from "../../components/Middleware/BlockUsers";

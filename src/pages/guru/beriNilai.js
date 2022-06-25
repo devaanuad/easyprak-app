@@ -1,7 +1,7 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState } from "react";
 import { useParams, Link, useHistory } from "react-router-dom";
 import PageTitle from "../../components/Typography/PageTitle";
-import { Input, Label, Select, Button } from "@windmill/react-ui";
+import { Input, Label, Button } from "@windmill/react-ui";
 import axios from "axios";
 import { API_URL } from "../../components/Middleware/constants";
 import UsersAccess from "../../components/Middleware/BlockUsers";
