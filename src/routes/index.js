@@ -23,7 +23,7 @@ export const routesSiswa = [
     component: page_ujian,
   },
   {
-    path: "/siswa/start:kode_soal",
-    component: page_ujian,
+    path: "/siswa/start/:kodeSoal",
+    component: page_start,
   },
 ];

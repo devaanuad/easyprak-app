@@ -129,7 +129,7 @@ function Ujian() {
               <TableCell>Nama Ujian</TableCell>
               <TableCell>Matpel</TableCell>
               <TableCell>Kelas</TableCell>
-              <TableCell>Durasi</TableCell>
+
               <TableCell>Mulai Ujian</TableCell>
               <TableCell>Selesai Ujian</TableCell>
               <TableCell>Start</TableCell>
@@ -148,9 +148,7 @@ function Ujian() {
                   <TableCell>
                     <span className="text-sm">{ujian.kelas}</span>
                   </TableCell>
-                  <TableCell>
-                    <span className="text-sm">{ujian.durasi}</span>
-                  </TableCell>
+
                   <TableCell>
                     <span className="text-sm">{ujian.mulai_ujian}</span>
                   </TableCell>
@@ -162,7 +160,7 @@ function Ujian() {
                       tag={Link}
                       to={`/app/siswa/start/${ujian.kode_soal}`}
                     >
-                      Start Ujian
+                      Kumpulkan
                     </Button>
                   </TableCell>
                 </TableRow>
