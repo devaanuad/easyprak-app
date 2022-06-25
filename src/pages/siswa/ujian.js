@@ -12,14 +12,8 @@ import {
   Button,
   Pagination,
   Input,
-  Modal,
-  ModalHeader,
-  ModalBody,
-  ModalFooter,
-  Label,
-  Select,
 } from "@windmill/react-ui";
-import { EditIcon, TrashIcon, SearchIcon } from "../../icons";
+import { SearchIcon } from "../../icons";
 import axios from "axios";
 import { API_URL } from "../../components/Middleware/constants";
 import UsersAccess from "../../components/Middleware/BlockUsers";
@@ -129,9 +123,7 @@ function Ujian() {
               <TableCell>Nama Ujian</TableCell>
               <TableCell>Matpel</TableCell>
               <TableCell>Kelas</TableCell>
-
-              <TableCell>Mulai Ujian</TableCell>
-              <TableCell>Selesai Ujian</TableCell>
+              <TableCell>Deadline</TableCell>
               <TableCell>Start</TableCell>
             </tr>
           </TableHeader>
@@ -150,9 +142,6 @@ function Ujian() {
                   </TableCell>
 
                   <TableCell>
-                    <span className="text-sm">{ujian.mulai_ujian}</span>
-                  </TableCell>
-                  <TableCell>
                     <span className="text-sm">{ujian.selesai_ujian}</span>
                   </TableCell>
                   <TableCell>
@@ -160,7 +149,7 @@ function Ujian() {
                       tag={Link}
                       to={`/app/siswa/start/${ujian.kode_soal}`}
                     >
-                      Kumpulkan
+                      Check
                     </Button>
                   </TableCell>
                 </TableRow>
@@ -169,7 +158,7 @@ function Ujian() {
           ) : (
             <TableBody>
               <TableRow>
-                <TableCell colSpan={7}>
+                <TableCell colSpan={6}>
                   <div className="pos-center">
                     <div className="loader" />
                   </div>
