@@ -20,4 +20,9 @@ export const routesSiswa = [
     icon: "HomeIcon",
     name: "Ujian",
   },
+  {
+    path: "/app/siswa/nilai",
+    icon: "MenuIcon",
+    name: "Nilai",
+  },
 ];
