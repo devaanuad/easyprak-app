@@ -1,9 +1,24 @@
 import { lazy } from "react";
-const Dashboard = lazy(() => import("../pages/Dashboard"));
+const Page404 = lazy(() => import("../pages/404"));
+const page_ujian = lazy(() => import("../pages/siswa/ujian"));
 
 export const routes = [
   {
-    path: "/dashboard",
-    component: Dashboard,
+    path: "/404",
+    component: Page404,
+  },
+];
+
+export const routesGuru = [
+  {
+    path: "/404",
+    component: Page404,
+  },
+];
+
+export const routesSiswa = [
+  {
+    path: "/ujian",
+    component: page_ujian,
   },
 ];

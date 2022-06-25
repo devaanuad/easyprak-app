@@ -1,7 +1,6 @@
 import React, { useContext, useState } from "react";
 import { SidebarContext } from "../context/SidebarContext";
 import {
-  SearchIcon,
   MoonIcon,
   SunIcon,
   BellIcon,
@@ -13,11 +12,16 @@ import {
 import {
   Avatar,
   Badge,
-  Input,
   Dropdown,
   DropdownItem,
   WindmillContext,
 } from "@windmill/react-ui";
+import { useHistory } from "react-router-dom";
+import axios from "axios";
+import { API_URL } from "./Middleware/constants";
+import * as SweetAlert from "./Sweetalert2";
+import * as Secure from "./Middleware/SecureLocalStorage";
+import SearchMenu from "./Search/SearchMenu";
 
 function Header() {
   const { mode, toggleMode } = useContext(WindmillContext);
@@ -34,6 +38,36 @@ function Header() {
     setIsProfileMenuOpen(!isProfileMenuOpen);
   }
 
+  const history = useHistory();
+  const logout = () => {
+    SweetAlert.SweetNanya("Are u Sure?", "press ok if sure").then(
+      async (result) => {
+        if (result.isConfirmed) {
+          try {
+            SweetAlert.SweetLoading();
+            await axios.post(
+              API_URL + "api/logout",
+              {},
+              {
+                withCredentials: true,
+                headers: {
+                  Authorization: `${Secure.getItem("token")}`,
+                },
+              }
+            );
+            await SweetAlert.SweetOK("Logout Success");
+            localStorage.removeItem("token");
+            localStorage.removeItem("data_user");
+            localStorage.removeItem("role");
+            history.push("/login");
+            window.location.reload();
+          } catch (error) {
+            SweetAlert.SweetError("Logout Failed", error.response.data.message);
+          }
+        }
+      }
+    );
+  };
   return (
     <header className="z-40 py-4 bg-white shadow-bottom dark:bg-gray-800">
       <div className="container flex items-center justify-between h-full px-6 mx-auto text-purple-600 dark:text-purple-300">
@@ -46,18 +80,8 @@ function Header() {
           <MenuIcon className="w-6 h-6" aria-hidden="true" />
         </button>
         {/* <!-- Search input --> */}
-        <div className="flex justify-center flex-1 lg:mr-32">
-          <div className="relative w-full max-w-xl mr-6 focus-within:text-purple-500">
-            <div className="absolute inset-y-0 flex items-center pl-2">
-              <SearchIcon className="w-4 h-4" aria-hidden="true" />
-            </div>
-            <Input
-              className="pl-8 text-gray-700"
-              placeholder="Search for Anything"
-              aria-label="Search"
-            />
-          </div>
-        </div>
+        <SearchMenu />
+        {/* END SEARCH */}
         <ul className="flex items-center flex-shrink-0 space-x-6">
           {/* <!-- Theme toggler --> */}
           <li className="flex">
@@ -138,7 +162,7 @@ function Header() {
                 <OutlineCogIcon className="w-4 h-4 mr-3" aria-hidden="true" />
                 <span>Settings</span>
               </DropdownItem>
-              <DropdownItem onClick={() => alert("Log out!")}>
+              <DropdownItem onClick={logout}>
                 <OutlineLogoutIcon
                   className="w-4 h-4 mr-3"
                   aria-hidden="true"

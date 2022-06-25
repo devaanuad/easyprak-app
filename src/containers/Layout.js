@@ -7,22 +7,21 @@ import Header from "../components/Header";
 import Main from "../containers/Main";
 import ThemedSuspense from "../components/ThemedSuspense";
 import { SidebarContext } from "../context/SidebarContext";
+import * as Secure from "../components/Middleware/SecureLocalStorage";
 
 const Page404 = lazy(() => import("../pages/404"));
-const routes = data.routes;
-// const role = localStorage.getItem("role");
-// const routes =
-//   role === "admin"
-//     ? data.adminRoutes
-//     : role === "kasir"
-//     ? data.kasirRoutes
-//     : role === "manager"
-//     ? data.managerRoutes
-//     : role === "undefined"
-//     ? data.routes
-//     : data.routes;
 
 function Layout() {
+  const role = Secure.getItem("role");
+  const cekToken = Secure.getItem("token");
+
+  const routes =
+    role === "guru"
+      ? data.routesGuru
+      : role === "siswa"
+      ? data.routesSiswa
+      : data.routes;
+
   const { isSidebarOpen, closeSidebar } = useContext(SidebarContext);
   let location = useLocation();
 
@@ -36,10 +35,13 @@ function Layout() {
         isSidebarOpen && "overflow-hidden"
       }`}
     >
-      <Sidebar />
+      {/* hilangan sidebar jika token null */}
+      {cekToken == "" ? <></> : <Sidebar />}
 
       <div className="flex flex-col flex-1 w-full">
-        <Header />
+        {/* hilangkan header jika tidak token null */}
+        {cekToken == "" ? <></> : <Header />}
+
         <Main>
           <Suspense fallback={<ThemedSuspense />}>
             <Switch>

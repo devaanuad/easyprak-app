@@ -3,16 +3,20 @@ import * as data from "../../routes/sidebar";
 import { NavLink, Route } from "react-router-dom";
 import * as Icons from "../../icons";
 import SidebarSubmenu from "./SidebarSubmenu";
-import { Button } from "@windmill/react-ui";
+import * as Secure from "../Middleware/SecureLocalStorage";
 
 function Icon({ icon, ...props }) {
   const Icon = Icons[icon];
   return <Icon {...props} />;
 }
 
-const routes = data.routes;
-// const role = localStorage.getItem('role')
-// const routes = role === "admin" ? data.routesadmin : role === "kasir" ? data.routeskasir : role === "manager" ? data.routesmanager : role === 'undefined' ? data.routes : data.routes
+const role = Secure.getItem("role");
+const routes =
+  role === "guru"
+    ? data.routesGuru
+    : role === "siswa"
+    ? data.routesSiswa
+    : data.routes;
 
 function SidebarContent() {
   return (
