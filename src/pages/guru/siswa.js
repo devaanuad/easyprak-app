@@ -26,7 +26,7 @@ import UsersAccess from "../../components/Middleware/BlockUsers";
 import * as SweetAlert from "../../components/Sweetalert2";
 import * as Secure from "../../components/Middleware/SecureLocalStorage";
 
-function Soal() {
+function Siswa() {
   // block login and akses role
   UsersAccess("guru");
 
@@ -47,7 +47,7 @@ function Soal() {
   }
 
   const getUsers = async () => {
-    const response = await axios.get(API_URL + "api/guru/pengumpulan", {
+    const response = await axios.get(API_URL + "api/guru/user", {
       withCredentials: true,
       headers: {
         Authorization: `${Secure.getItem("token")}`,
@@ -88,10 +88,8 @@ function Soal() {
   useEffect(() => {
     if (search !== "") {
       setDataTable2(
-        users.filter(
-          (user) =>
-            user.nama.toLowerCase().includes(search.toLowerCase()) ||
-            user.matpel.toLowerCase().includes(search.toLowerCase())
+        users.filter((user) =>
+          user.name.toLowerCase().includes(search.toLowerCase())
         )
       );
     } else if (search === "") {
@@ -129,9 +127,9 @@ function Soal() {
             icon={EditIcon}
             aria-label="Edit"
             tag={Link}
-            to={`/app/guru/pengumpulan/buat`}
+            to={`/app/guru/siswa/buat`}
           >
-            Tambah Data
+            Tambah Data Pengumpulan
           </Button>
         </div>
       </div>
@@ -140,11 +138,10 @@ function Soal() {
         <Table>
           <TableHeader>
             <tr>
-              <TableCell>Nama Pengumpulan</TableCell>
-              <TableCell>Matpel</TableCell>
+              <TableCell>Nama Siswa</TableCell>
+              <TableCell>email</TableCell>
               <TableCell>Kelas</TableCell>
-              <TableCell>Deadline</TableCell>
-              <TableCell>Kode Soal</TableCell>
+
               {/* <TableCell>Opsi</TableCell> */}
             </tr>
           </TableHeader>
@@ -153,23 +150,15 @@ function Soal() {
               <TableBody key={user.id}>
                 <TableRow>
                   <TableCell>
-                    <span className="text-sm">{user.nama}</span>
+                    <span className="text-sm">{user.name}</span>
                   </TableCell>
 
                   <TableCell>
-                    <span className="text-sm">{user.matpel}</span>
+                    <span className="text-sm">{user.email}</span>
                   </TableCell>
 
                   <TableCell>
                     <span className="text-sm">{user.kelas}</span>
-                  </TableCell>
-
-                  <TableCell>
-                    <span className="text-sm">{user.selesai_ujian}</span>
-                  </TableCell>
-
-                  <TableCell>
-                    <span className="text-sm">{user.kode_soal}</span>
                   </TableCell>
 
                   {/* <TableCell>
@@ -217,4 +206,4 @@ function Soal() {
   );
 }
 
-export default Soal;
+export default Siswa;

@@ -13,7 +13,7 @@ export const routesGuru = [
     name: "Penilaian",
   },
   {
-    path: "/app/guru/user",
+    path: "/app/guru/siswa",
     icon: "PeopleIcon",
     name: "Data Siswa",
   },

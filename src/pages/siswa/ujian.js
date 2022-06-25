@@ -23,6 +23,7 @@ import * as Secure from "../../components/Middleware/SecureLocalStorage";
 function Ujian() {
   // block login and akses role
   UsersAccess("siswa");
+  const getUsers = JSON.parse(Secure.getItem("data_user"));
   const [ujiann, setUjiann] = useState([]);
   const [pageTable2, setPageTable2] = useState(1);
   const [dataTable2, setDataTable2] = useState([]);
@@ -128,33 +129,37 @@ function Ujian() {
             </tr>
           </TableHeader>
           {loading ? (
-            dataTable2.map((ujian) => (
-              <TableBody key={ujian.id}>
-                <TableRow>
-                  <TableCell>
-                    <span className="text-sm">{ujian.nama}</span>
-                  </TableCell>
-                  <TableCell>
-                    <span className="text-sm">{ujian.matpel}</span>
-                  </TableCell>
-                  <TableCell>
-                    <span className="text-sm">{ujian.kelas}</span>
-                  </TableCell>
+            dataTable2
+              .filter((user) =>
+                user.kelas.toLowerCase().includes(getUsers.kelas.toLowerCase())
+              )
+              .map((ujian) => (
+                <TableBody key={ujian.id}>
+                  <TableRow>
+                    <TableCell>
+                      <span className="text-sm">{ujian.nama}</span>
+                    </TableCell>
+                    <TableCell>
+                      <span className="text-sm">{ujian.matpel}</span>
+                    </TableCell>
+                    <TableCell>
+                      <span className="text-sm">{ujian.kelas}</span>
+                    </TableCell>
 
-                  <TableCell>
-                    <span className="text-sm">{ujian.selesai_ujian}</span>
-                  </TableCell>
-                  <TableCell>
-                    <Button
-                      tag={Link}
-                      to={`/app/siswa/start/${ujian.kode_soal}`}
-                    >
-                      Check
-                    </Button>
-                  </TableCell>
-                </TableRow>
-              </TableBody>
-            ))
+                    <TableCell>
+                      <span className="text-sm">{ujian.selesai_ujian}</span>
+                    </TableCell>
+                    <TableCell>
+                      <Button
+                        tag={Link}
+                        to={`/app/siswa/start/${ujian.kode_soal}`}
+                      >
+                        Check
+                      </Button>
+                    </TableCell>
+                  </TableRow>
+                </TableBody>
+              ))
           ) : (
             <TableBody>
               <TableRow>

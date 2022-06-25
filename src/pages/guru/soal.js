@@ -143,7 +143,7 @@ function Soal() {
               <TableCell>Kelas</TableCell>
               <TableCell>Guru</TableCell>
               <TableCell>Kode Soal</TableCell>
-              <TableCell>Opsi</TableCell>
+              {/* <TableCell>Opsi</TableCell> */}
             </tr>
           </TableHeader>
           {loading ? (
@@ -170,7 +170,7 @@ function Soal() {
                     <span className="text-sm">{user.kode_soal}</span>
                   </TableCell>
 
-                  <TableCell>
+                  {/* <TableCell>
                     <div className="flex items-center space-x-4">
                       <Button
                         layout="link"
@@ -186,14 +186,14 @@ function Soal() {
                         <TrashIcon className="w-5 h-5" aria-hidden="true" />
                       </Button>
                     </div>
-                  </TableCell>
+                  </TableCell> */}
                 </TableRow>
               </TableBody>
             ))
           ) : (
             <TableBody>
               <TableRow>
-                <TableCell colSpan={6}>
+                <TableCell colSpan={5}>
                   <div className="pos-center">
                     <div className="loader" />
                   </div>
