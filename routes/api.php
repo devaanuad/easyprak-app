@@ -3,9 +3,11 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\AuthController;
+use App\Http\Controllers\Guru\SoalController;
 use App\Http\Controllers\Guru\UserController;
 use App\Http\Controllers\Siswa\NilaiController;
 use App\Http\Controllers\Siswa\UjianController;
+
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -22,6 +24,11 @@ Route::middleware('auth:sanctum')->prefix('guru')->group(function () {
     Route::get('/user', [UserController::class, 'getUserss']);
     Route::get('/nilai', [NilaiController::class, 'getNilai']);
     Route::post('/nilai/{id}', [NilaiController::class, 'beriPenilaianSiswa']);
+
+    Route::get('/soal', [SoalController::class, 'getSoal']);
+    Route::post('/soal/create', [SoalController::class, 'createSoal']);
+    Route::get('/pengumpulan', [UjianController::class, 'getUjian']);
+    Route::post('/pengumpulan/create', [UjianController::class, 'createPengumpulan']);
 });
 
 Route::middleware('auth:sanctum')->prefix('siswa')->group(function () {

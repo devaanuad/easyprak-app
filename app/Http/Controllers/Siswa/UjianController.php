@@ -14,24 +14,19 @@ class UjianController extends Controller
 {
     public function getUjian(Request $req)
     {
-        $user = $req->user();
-        if ($user->tokenCan('siswa_token')) {
-            $users = UjianResource::collection(Ujian::all());
 
-            if (empty($users)) {
-                return response()->json([
-                    'message' => 'Data tidak ditemukan'
-                ], 404);
-            }
 
+        $users = UjianResource::collection(Ujian::all());
+
+        if (empty($users)) {
             return response()->json([
-                "data" => $users
-            ], 200);
-        } else {
-            return response()->json([
-                'message' => 'Anda tidak memiliki akses'
-            ], 401);
+                'message' => 'Data tidak ditemukan'
+            ], 404);
         }
+
+        return response()->json([
+            "data" => $users
+        ], 200);
     }
 
     public function getUjianByKode(Request $req, $kode)
@@ -94,6 +89,42 @@ class UjianController extends Controller
                     'error' => $th->getMessage()
                 ], 500);
             }
+        } else {
+            return response()->json([
+                'message' => 'Anda tidak memiliki akses'
+            ], 401);
+        }
+    }
+
+    public function createPengumpulan(Request $req)
+    {
+        $user = $req->user();
+        if ($user->tokenCan('guru_token')) {
+            $validator = Validator::make($req->all(), [
+                'nama' => 'required',
+                'matpel' => 'required',
+                'kelas' => 'required',
+                'mulai_ujian' => 'nullable',
+                'selesai_ujian' => 'required',
+                'kode_soal' => 'required',
+            ]);
+            if ($validator->fails()) {
+                return response()->json([
+                    'message' => 'Data tidak lengkap'
+                ], 400);
+            }
+            $soal = new Ujian();
+            $soal->nama = $req->nama;
+            $soal->matpel = $req->matpel;
+            $soal->kelas = $req->kelas;
+            $soal->selesai_ujian = $req->selesai_ujian;
+            $soal->kode_soal = $req->kode_soal;
+            $soal->mulai_ujian = $req->mulai_ujian;
+            $soal->save();
+            return response()->json([
+                'message' => 'Data berhasil ditambahkan',
+                'data' => $soal
+            ], 201);
         } else {
             return response()->json([
                 'message' => 'Anda tidak memiliki akses'

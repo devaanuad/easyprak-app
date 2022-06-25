@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('nama');
             $table->string('matpel');
             $table->string('kelas');
-            $table->dateTime('mulai_ujian');
+            $table->dateTime('mulai_ujian')->nullable();
             $table->dateTime('selesai_ujian');
             $table->string('kode_soal');
             $table->timestamps();
