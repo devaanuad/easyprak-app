@@ -16,7 +16,7 @@ export const routesGuru = [
 
 export const routesSiswa = [
   {
-    path: "/app/ujian",
+    path: "/app/siswa/ujian",
     icon: "HomeIcon",
     name: "Ujian",
   },
