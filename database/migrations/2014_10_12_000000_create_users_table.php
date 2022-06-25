@@ -19,6 +19,10 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->string('kelompok')->nullable();
+            $table->enum('role', ['admin', 'user']);
+            $table->enum('user_role', ['UI/UX', 'frontend', 'backend'])->nullable();
+            $table->string('kelas')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });
