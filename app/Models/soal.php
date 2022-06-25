@@ -19,5 +19,6 @@ class soal extends Model
         'jawaban',
         'kelas',
         'guru',
+        'kode_soal',
     ];
 }

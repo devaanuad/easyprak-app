@@ -17,6 +17,11 @@ class DatabaseSeeder extends Seeder
     {
         \App\Models\User::factory(20)->create();
 
+        $this->call([
+            UjianSeeder::class,
+            SoalSeeder::class,
+        ]);
+
         \App\Models\User::create([
             'name' => 'Guru',
             'email' => 'admin@gmail.com',

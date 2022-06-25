@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\Guru\UserController;
+use App\Http\Controllers\Siswa\UjianController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -20,7 +21,9 @@ Route::middleware('auth:sanctum')->prefix('guru')->group(function () {
     Route::get('/user', [UserController::class, 'getUserss']);
 });
 
-
+Route::middleware('auth:sanctum')->prefix('siswa')->group(function () {
+    Route::get('/ujian', [UjianController::class, 'getUjian']);
+});
 
 
 // route login logot

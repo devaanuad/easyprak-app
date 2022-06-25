@@ -24,6 +24,7 @@ return new class extends Migration
             $table->string('jawaban');
             $table->string('kelas');
             $table->string('guru');
+            $table->string('kode_soal');
             $table->timestamps();
         });
     }
