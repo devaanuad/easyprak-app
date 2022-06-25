@@ -22,6 +22,7 @@ class UjianResource extends JsonResource
             'durasi' => $this->durasi,
             'mulai_ujian' => $this->mulai_ujian,
             'selesai_ujian' => $this->selesai_ujian,
+            'kode_soal' => $this->kode_soal,
         ];
     }
 }

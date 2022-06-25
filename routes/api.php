@@ -23,6 +23,7 @@ Route::middleware('auth:sanctum')->prefix('guru')->group(function () {
 
 Route::middleware('auth:sanctum')->prefix('siswa')->group(function () {
     Route::get('/ujian', [UjianController::class, 'getUjian']);
+    Route::get('/ujian/{kode}', [UjianController::class, 'getUjianByKode']);
 });
 
 
