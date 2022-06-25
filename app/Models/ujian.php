@@ -12,7 +12,6 @@ class ujian extends Model
         'nama',
         'matpel',
         'kelas',
-        'durasi',
         'mulai_ujian',
         'selesai_ujian',
         'kode_soal',

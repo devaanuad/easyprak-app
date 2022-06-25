@@ -12,11 +12,7 @@ class soal extends Model
     protected $fillable = [
         'matpel',
         'soal',
-        'jwb1',
-        'jwb2',
-        'jwb3',
-        'jwb4',
-        'jawaban',
+
         'kelas',
         'guru',
         'kode_soal',

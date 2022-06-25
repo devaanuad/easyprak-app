@@ -16,10 +16,9 @@ class UjianSeeder extends Seeder
     {
         $data = [
             [
-                'nama' => 'Ujian Semester genap 2022',
+                'nama' => 'Ujian Praktek Semester genap 2022',
                 'matpel' => 'Bahasa Indonesia',
                 'kelas' => 'X',
-                'durasi' => '60',
                 'mulai_ujian' => '2020-01-01 00:00:00',
                 'selesai_ujian' => '2020-01-01 00:00:00',
                 'kode_soal' => 'SOAL-001',

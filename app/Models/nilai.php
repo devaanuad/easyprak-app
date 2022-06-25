@@ -14,6 +14,8 @@ class nilai extends Model
         'kelas',
         'matpel',
         'nilai',
+        'file',
+        'kode_soal',
 
     ];
 }

@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\Guru\UserController;
+use App\Http\Controllers\Siswa\NilaiController;
 use App\Http\Controllers\Siswa\UjianController;
 /*
 |--------------------------------------------------------------------------
@@ -24,6 +25,9 @@ Route::middleware('auth:sanctum')->prefix('guru')->group(function () {
 Route::middleware('auth:sanctum')->prefix('siswa')->group(function () {
     Route::get('/ujian', [UjianController::class, 'getUjian']);
     Route::get('/ujian/{kode}', [UjianController::class, 'getUjianByKode']);
+    Route::post('/postTugas', [UjianController::class, 'postTugas']);
+
+    Route::get('/nilai', [NilaiController::class, 'getNilai']);
 });
 
 

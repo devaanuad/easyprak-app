@@ -19,7 +19,9 @@ return new class extends Migration
             $table->string('nama_siswa');
             $table->string('kelas');
             $table->string('matpel');
-            $table->string('nilai');
+            $table->string('nilai')->nullable();
+            $table->text('file');
+            $table->string('kode_soal');
             $table->timestamps();
         });
     }

@@ -6,7 +6,9 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Ujian;
 use App\Http\Resources\UjianResource;
+use App\Models\nilai;
 use App\Models\soal;
+use Illuminate\Support\Facades\Validator;
 
 class UjianController extends Controller
 {
@@ -45,6 +47,53 @@ class UjianController extends Controller
             return response()->json([
                 "data" => $soal
             ], 200);
+        } else {
+            return response()->json([
+                'message' => 'Anda tidak memiliki akses'
+            ], 401);
+        }
+    }
+
+    public function postTugas(Request $req)
+    {
+        $user = $req->user();
+        if ($user->tokenCan('siswa_token')) {
+            $validator = Validator::make($req->all(), [
+                'user_id' => 'required',
+                'nama_siswa' => 'required',
+                'kelas' => 'required',
+                'matpel' => 'required',
+                'nilai' => 'nullable',
+                'file' => 'required',
+                'kode_soal' => 'required'
+            ]);
+
+            if ($validator->fails()) {
+                return response()->json([
+                    'message' => 'Data tidak valid',
+                    'error' => $validator->errors()
+                ], 400);
+            }
+
+            try {
+                $nilai = new nilai();
+                $nilai->user_id = $req->user_id;
+                $nilai->nama_siswa = $req->nama_siswa;
+                $nilai->kelas = $req->kelas;
+                $nilai->matpel = $req->matpel;
+                $nilai->nilai = $req->nilai;
+                $nilai->file = $req->file->store('tugas');
+                $nilai->kode_soal = $req->kode_soal;
+                $nilai->save();
+                return response()->json([
+                    'message' => 'Data berhasil dikirim'
+                ], 201);
+            } catch (\Throwable $th) {
+                return response()->json([
+                    'message' => 'Terjadi kesalahan',
+                    'error' => $th->getMessage()
+                ], 500);
+            }
         } else {
             return response()->json([
                 'message' => 'Anda tidak memiliki akses'
