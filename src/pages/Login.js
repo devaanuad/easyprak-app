@@ -16,7 +16,7 @@ function Login() {
   const role = Secure.getItem("role");
   if (tokens) {
     role === "guru"
-      ? History.push("/app/guru/dashboard")
+      ? History.push("/app/guru/nilai")
       : role === "siswa"
       ? History.push("/app/siswa/ujian")
       : History.push("/login");
