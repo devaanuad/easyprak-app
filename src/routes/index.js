@@ -4,6 +4,9 @@ const page_ujian = lazy(() => import("../pages/siswa/ujian"));
 const page_start = lazy(() => import("../pages/siswa/start"));
 const page_nilai = lazy(() => import("../pages/siswa/nilai"));
 
+const page_penilaian = lazy(() => import("../pages/guru/penilaian"));
+const page_beriNilai = lazy(() => import("../pages/guru/beriNilai"));
+
 export const routes = [
   {
     path: "/404",
@@ -13,8 +16,12 @@ export const routes = [
 
 export const routesGuru = [
   {
-    path: "/404",
-    component: Page404,
+    path: "/guru/penilaian",
+    component: page_penilaian,
+  },
+  {
+    path: "/guru/penilaian/siswa/:id",
+    component: page_beriNilai,
   },
 ];
 
