@@ -29,6 +29,7 @@ Route::middleware('auth:sanctum')->prefix('guru')->group(function () {
     Route::post('/soal/create', [SoalController::class, 'createSoal']);
     Route::get('/pengumpulan', [UjianController::class, 'getUjian']);
     Route::post('/pengumpulan/create', [UjianController::class, 'createPengumpulan']);
+    Route::post('/siswa/create', [UserController::class, 'createUser']);
 });
 
 Route::middleware('auth:sanctum')->prefix('siswa')->group(function () {
