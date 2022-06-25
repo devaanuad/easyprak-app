@@ -6,6 +6,13 @@ const page_nilai = lazy(() => import("../pages/siswa/nilai"));
 
 const page_penilaian = lazy(() => import("../pages/guru/penilaian"));
 const page_beriNilai = lazy(() => import("../pages/guru/beriNilai"));
+const page_soal = lazy(() => import("../pages/guru/soal"));
+const page_buat_soal = lazy(() => import("../pages/guru/buatSoal"));
+
+const page_pengumpulan = lazy(() => import("../pages/guru/pengumpulan"));
+const page_pengumpulan_buat = lazy(() =>
+  import("../pages/guru/buatPengumpulan")
+);
 
 export const routes = [
   {
@@ -22,6 +29,22 @@ export const routesGuru = [
   {
     path: "/guru/penilaian/siswa/:id",
     component: page_beriNilai,
+  },
+  {
+    path: "/guru/soal",
+    component: page_soal,
+  },
+  {
+    path: "/guru/soal/buat",
+    component: page_buat_soal,
+  },
+  {
+    path: "/guru/pengumpulan",
+    component: page_pengumpulan,
+  },
+  {
+    path: "/guru/pengumpulan/buat",
+    component: page_pengumpulan_buat,
   },
 ];
 

@@ -12,6 +12,21 @@ export const routesGuru = [
     icon: "PeopleIcon",
     name: "Penilaian",
   },
+  {
+    path: "/app/guru/user",
+    icon: "PeopleIcon",
+    name: "Data Siswa",
+  },
+  {
+    path: "/app/guru/soal",
+    icon: "FormsIcon",
+    name: "Data Soal",
+  },
+  {
+    path: "/app/guru/pengumpulan",
+    icon: "FormsIcon",
+    name: "Jadwal Pengumpulan Tugas",
+  },
 ];
 
 export const routesSiswa = [
