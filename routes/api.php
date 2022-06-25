@@ -24,7 +24,6 @@ Route::middleware('auth:sanctum')->prefix('guru')->group(function () {
     Route::get('/user', [UserController::class, 'getUserss']);
     Route::get('/nilai', [NilaiController::class, 'getNilai']);
     Route::post('/nilai/{id}', [NilaiController::class, 'beriPenilaianSiswa']);
-
     Route::get('/soal', [SoalController::class, 'getSoal']);
     Route::post('/soal/create', [SoalController::class, 'createSoal']);
     Route::get('/pengumpulan', [UjianController::class, 'getUjian']);
@@ -35,14 +34,11 @@ Route::middleware('auth:sanctum')->prefix('guru')->group(function () {
 Route::middleware('auth:sanctum')->prefix('siswa')->group(function () {
     Route::get('/ujian', [UjianController::class, 'getUjian']);
     Route::get('/ujian/{kode}', [UjianController::class, 'getUjianByKode']);
-
     Route::post('/postTugas', [UjianController::class, 'postTugas']);
-
     Route::get('/nilai', [NilaiController::class, 'getNilai']);
     Route::post('/cari/user', [NilaiController::class, 'getNilaiByKode']);
     Route::get('nilai/{id}', [NilaiController::class, 'getNilaiById']);
 });
-
 
 // route login logot
 Route::post('/login', [AuthController::class, 'login']);

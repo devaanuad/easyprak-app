@@ -25,8 +25,8 @@ class SoalSeeder extends Seeder
             [
                 'matpel' => 'Olahraga',
                 'soal' => 'Tugas Praktek Olahraga Senam kelas X',
-                'kelas' => 'X',
-                'guru' => 'Sujamin S.ST',
+                'kelas' => 'XI',
+                'guru' => 'Bu Marto S.ST',
                 'kode_soal' => 'SOAL-002',
             ],
         ];

@@ -23,6 +23,14 @@ class UjianSeeder extends Seeder
                 'selesai_ujian' => '2020-01-01 00:00:00',
                 'kode_soal' => 'SOAL-001',
             ],
+            [
+                'nama' => 'UTS 2022',
+                'matpel' => 'Olahraga',
+                'kelas' => 'XI',
+                'mulai_ujian' => '2020-01-01 00:00:00',
+                'selesai_ujian' => '2020-01-01 00:00:00',
+                'kode_soal' => 'SOAL-002',
+            ],
         ];
 
         foreach ($data as $item) {
