@@ -8,6 +8,11 @@ export const routes = [
 
 export const routesGuru = [
   {
+    path: "/app/guru/dashboard",
+    icon: "HomeIcon",
+    name: "Dashboard",
+  },
+  {
     path: "/app/guru/penilaian",
     icon: "PeopleIcon",
     name: "Penilaian",
