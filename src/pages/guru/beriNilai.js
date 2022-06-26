@@ -59,7 +59,7 @@ function BeriNilai() {
           </Label>
 
           <div className="mt-4" style={{ textAlign: "right" }}>
-            <Button layout="outline" tag={Link} to="/app/admin/user/">
+            <Button layout="outline" tag={Link} to="/app/guru/penilaian">
               Back
             </Button>
             <Button type="submit" className="ml-3">

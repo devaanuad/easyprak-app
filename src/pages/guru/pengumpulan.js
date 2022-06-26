@@ -99,7 +99,7 @@ function Soal() {
 
   return (
     <>
-      <PageTitle>Data User</PageTitle>
+      <PageTitle>Data Pengumpulan Tugas</PageTitle>
       <div className="grid gap-3 md:grid-cols-3 xl:grid-cols-3  w-xl mb-5">
         <div className="relative focus-within:text-purple-500">
           <div className="absolute inset-y-0 flex items-center pl-2">

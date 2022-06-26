@@ -73,7 +73,7 @@ function BuatSoal() {
       <div className="px-4 py-3 mb-8 bg-white rounded-lg shadow-md dark:bg-gray-800">
         <form onSubmit={submitSoal}>
           <Label>
-            <span>Role</span>
+            <span>Matpel</span>
             <Select
               className="mt-1"
               value={matpel}
@@ -95,7 +95,7 @@ function BuatSoal() {
             />
           </Label>
           <Label className="mt-4">
-            <span>Role</span>
+            <span>Kelas</span>
             <Select
               className="mt-1"
               value={kelas}
