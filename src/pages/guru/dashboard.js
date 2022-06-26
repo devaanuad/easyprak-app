@@ -1,13 +1,7 @@
 import React, { useState, useEffect } from "react";
 import InfoCard from "../../components/Cards/InfoCard";
 import PageTitle from "../../components/Typography/PageTitle";
-import {
-  ChatIcon,
-  CartIcon,
-  MoneyIcon,
-  PeopleIcon,
-  FormsIcon,
-} from "../../icons";
+import { ChatIcon, MoneyIcon, PeopleIcon, FormsIcon } from "../../icons";
 import RoundIcon from "../../components/RoundIcon";
 import axios from "axios";
 import { API_URL } from "../../components/Middleware/constants";

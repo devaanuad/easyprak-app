@@ -1,17 +1,8 @@
 import React, { useContext, useState } from "react";
 import { SidebarContext } from "../context/SidebarContext";
-import {
-  MoonIcon,
-  SunIcon,
-  BellIcon,
-  MenuIcon,
-  OutlinePersonIcon,
-  OutlineCogIcon,
-  OutlineLogoutIcon,
-} from "../icons";
+import { MoonIcon, SunIcon, MenuIcon, OutlineLogoutIcon } from "../icons";
 import {
   Avatar,
-  Badge,
   Dropdown,
   DropdownItem,
   WindmillContext,
